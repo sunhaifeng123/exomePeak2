@@ -50,7 +50,7 @@ if(sum(grepl("mod",rownames(sep))) < 10 ) {
   stop("guitar plot function cannot be performed for total peaks number < 10.")
 }
 
-stopifnot(!(is.null(txdb) & is.null(guitar_coordinate)))
+#stopifnot(!(is.null(txdb) & is.null(guitar_coordinate)))
 
 if(is.null(guitar_coordinate)){
   guitar_coordinate = quiet( Guitar::makeGuitarTxdb(txdb) )
@@ -83,7 +83,7 @@ quiet(
 suppressWarnings(
               GuitarPlot(
                  gfeatures = gr_list,
-                 txTxdb = txdb,
+                 txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
                  saveToPDFprefix = dir_arg
                         )
                 )
@@ -125,7 +125,7 @@ suppressWarnings(
 
                   Guitar::GuitarPlot(
                   gfeatures = gr_list,
-                  txTxdb = txdb,
+                  txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
                   saveToPDFprefix = dir_arg
                 )
 
@@ -170,7 +170,7 @@ suppressWarnings(
       quiet(
       GuitarPlot(
         gfeatures = gr_list,
-        txTxdb = txdb,
+        txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
         saveToPDFprefix = dir_arg
       )
       )
