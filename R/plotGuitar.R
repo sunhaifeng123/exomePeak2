@@ -36,9 +36,10 @@
 setMethod("plotGuitar",
           "SummarizedExomePeak",
                function(sep,
-                        txTxdb = NULL,
+                        txdb = NULL,
                         save_pdf_prefix = NULL,
                         include_control_regions = TRUE,
+                        guitar_coordinate = NULL,
                         save_dir = ".") {
 #Check the installation state of the guitar plot
 if(!require(Guitar)){
@@ -49,11 +50,11 @@ if(sum(grepl("mod",rownames(sep))) < 10 ) {
   stop("guitar plot function cannot be performed for total peaks number < 10.")
 }
 
-# stopifnot(!(is.null(txdb) & is.null(guitar_coordinate)))
+stopifnot(!(is.null(txdb) & is.null(guitar_coordinate)))
 
-# if(is.null(guitar_coordinate)){
-#  guitar_coordinate = quiet( Guitar::makeGuitarTxdb(txdb) )
-#}
+if(is.null(guitar_coordinate)){
+  guitar_coordinate = quiet( Guitar::makeGuitarTxdb(txdb) )
+}
 
 if(is.null(save_pdf_prefix)) {
   dir_arg <- NA
@@ -81,9 +82,9 @@ if(!include_control_regions){
 quiet(
 suppressWarnings(
               GuitarPlot(
-                 stGRangeLists = gr_list,
-                 txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
-                 miscOutFilePrefix = dir_arg
+                 gfeatures = gr_list,
+                 GuitarCoordsFromTxDb = guitar_coordinate,
+                 saveToPDFprefix = dir_arg
                         )
                 )
 )
@@ -123,9 +124,9 @@ suppressWarnings(
    suppressWarnings(
 
                   Guitar::GuitarPlot(
-                  stGRangeLists = gr_list,
-                  txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
-                  miscOutFilePrefix = dir_arg
+                  gfeatures = gr_list,
+                  GuitarCoordsFromTxDb = guitar_coordinate,
+                  saveToPDFprefix = dir_arg
                 )
 
             )
@@ -168,9 +169,9 @@ suppressWarnings(
     suppressWarnings(
       quiet(
       GuitarPlot(
-        stGRangeLists = gr_list,
-        txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
-        miscOutFilePrefix = dir_arg
+        gfeatures = gr_list,
+        GuitarCoordsFromTxDb = guitar_coordinate,
+        saveToPDFprefix = dir_arg
       )
       )
     )
