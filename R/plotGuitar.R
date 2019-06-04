@@ -36,7 +36,7 @@
 setMethod("plotGuitar",
           "SummarizedExomePeak",
                function(sep,
-                        txdb = NULL,
+                        txTxdb = NULL,
                         save_pdf_prefix = NULL,
                         include_control_regions = TRUE,
                         save_dir = ".") {
@@ -83,7 +83,7 @@ suppressWarnings(
               GuitarPlot(
                  stGRangeLists = gr_list,
                  txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
-                 saveToPDFprefix = dir_arg
+                 miscOutFilePrefix = dir_arg
                         )
                 )
 )
@@ -125,7 +125,7 @@ suppressWarnings(
                   Guitar::GuitarPlot(
                   stGRangeLists = gr_list,
                   txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
-                  saveToPDFprefix = dir_arg
+                  miscOutFilePrefix = dir_arg
                 )
 
             )
@@ -170,7 +170,7 @@ suppressWarnings(
       GuitarPlot(
         stGRangeLists = gr_list,
         txTxdb = TxDb.Mmusculus.UCSC.mm10.ensGene,
-        saveToPDFprefix = dir_arg
+        miscOutFilePrefix = dir_arg
       )
       )
     )
