@@ -83,7 +83,7 @@ quiet(
 suppressWarnings(
               GuitarPlot(
                  gfeatures = gr_list,
-                 GuitarCoordsFromTxDb = guitar_coordinate,
+                 txTxdb = txdb,
                  saveToPDFprefix = dir_arg
                         )
                 )
@@ -125,7 +125,7 @@ suppressWarnings(
 
                   Guitar::GuitarPlot(
                   gfeatures = gr_list,
-                  GuitarCoordsFromTxDb = guitar_coordinate,
+                  txTxdb = txdb,
                   saveToPDFprefix = dir_arg
                 )
 
@@ -170,7 +170,7 @@ suppressWarnings(
       quiet(
       GuitarPlot(
         gfeatures = gr_list,
-        GuitarCoordsFromTxDb = guitar_coordinate,
+        txTxdb = txdb,
         saveToPDFprefix = dir_arg
       )
       )
